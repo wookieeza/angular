@@ -51,30 +51,39 @@
                       {{review.body}}
                       <cite>by: {{review.author}}</cite>
     				</blockquote>
-    				<form name="reviewForm">
+    				<h4>Submit a Review</h4>
+    				<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+    				                        ng-submit="reviewCtrl.addReview(product)">
+    				  <fieldset class="form-group">
     					<blockquote>
-    						<b>Stars: {{review.stars}}</b>
-    						{{review.body}}
-    						{{review.color}}
-    						{{review.terms}}
-    						<cite>by: {{review.author}}</cite>
+    						<b>Stars: {{reviewCtrl.review.stars}}</b>
+    						{{reviewCtrl.review.body}}
+    						{{reviewCtrl.review.color}}
+    						{{reviewCtrl.review.terms}}
+    						<cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
     					</blockquote>
+    					 </fieldset>
+                         <fieldset class="form-group">
 
-    					<select ng-model="review.stars">
-    						<option value="1">1 star</option>
-    						<option value="2">2 star</option>
-    						<option value="3">3 star</option>
-    						<option value="4">4 star</option>
-    						<option value="5">5 star</option>
+    					<select ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+    						<option value="">Rate this product</option>
     					</select>
-    					<textarea ng-model="review.body"></textarea>
+    					<textarea ng-model="reviewCtrl.review.body"></textarea>
+    					</fieldset>
+                        <fieldset class="form-group">
+
     					<label>by:</label>
-    					<input ng-model="review.author" type="email"/>
-    					<input ng-model="review.terms" type="checkbox" />
+    					<input ng-model="reviewCtrl.review.author" type="email"/>
+    					</fieldset>
+
+              <fieldset class="form-group">
+
+    					<input ng-model="reviewCtrl.review.terms" type="checkbox" />
+    					</fieldset>
     					
-    					<input ng-model="review.color" type="radio" value="red"/> Red
-    					<input ng-model="review.color" type="radio" value="blue"/> Blue
-    					<input ng-model="review.color" type="radio" value="green"/> Green
+    					<input ng-model="reviewCtrl.review.color" type="radio" value="red"/> Red
+    					<input ng-model="reviewCtrl.review.color" type="radio" value="blue"/> Blue
+    					<input ng-model="reviewCtrl.review.color" type="radio" value="green"/> Green
 
     					<input type="submit" value="Submit"/>
     				</form>
