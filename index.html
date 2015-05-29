@@ -2,6 +2,7 @@
 <html ng-app="store">
   <head>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body ng-controller="StoreController as store">
     
@@ -53,7 +54,7 @@
     				</blockquote>
     				<h4>Submit a Review</h4>
     				<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-    				                        ng-submit="reviewCtrl.addReview(product)">
+    				                        ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate> <!-- turn off default html validation-->
     				  <fieldset class="form-group">
     					<blockquote>
     						<b>Stars: {{reviewCtrl.review.stars}}</b>
@@ -65,17 +66,17 @@
     					 </fieldset>
                          <fieldset class="form-group">
 
-    					<select ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+    					<select ng-model="reviewCtrl.review.stars" required ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
     						<option value="">Rate this product</option>
     					</select>
-    					<textarea ng-model="reviewCtrl.review.body"></textarea>
+    					<textarea ng-model="reviewCtrl.review.body" required ></textarea>
     					</fieldset>
                         <fieldset class="form-group">
 
     					<label>by:</label>
-    					<input ng-model="reviewCtrl.review.author" type="email"/>
+    					<input ng-model="reviewCtrl.review.author" required type="email"/>
     					</fieldset>
-
+                        <div>reviewForm is valid? {{reviewForm.$valid}}</div><!-- .$valid is a built in property from angular-->
               <fieldset class="form-group">
 
     					<input ng-model="reviewCtrl.review.terms" type="checkbox" />
