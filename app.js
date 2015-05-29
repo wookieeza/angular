@@ -30,6 +30,23 @@ var gems = [
        	 ,
        }
 	],
+	reviews:[
+      {
+        stars:5,
+        body: "I love this product!",
+        author:"joe@thomas.com"
+      },
+      {
+        stars: 1,
+        body: "This product sucks",
+        author: "tim@hater.com"
+      },
+      {
+        stars: 2,
+        body: "Meh",
+        author: "so@hso.com"
+      }
+	],
 	canPurchase: false,
 	soldOut: false
   },
@@ -44,6 +61,23 @@ var gems = [
        	 full:'images/polyhedron.png'
        }
 	],
+	reviews:[
+      {
+        stars:5,
+        body: "I love this product!",
+        author:"joe@thomas.com"
+      },
+      {
+        stars: 1,
+        body: "This product sucks",
+        author: "tim@hater.com"
+      },
+      {
+        stars: 2,
+        body: "Meh",
+        author: "so@hso.com"
+      }
+	],
 	canPurchase: true,
 	soldOut: false
   },
@@ -57,6 +91,24 @@ var gems = [
        	thumb:'images/diamond_thumb.png',
        	 full:'images/diamond.png'
        }
+	],
+	
+    reviews:[
+      {
+        stars:5,
+        body: "I love this product!",
+        author:"joe@thomas.com"
+      },
+      {
+        stars: 1,
+        body: "This product sucks",
+        author: "tim@hater.com"
+      },
+      {
+        stars: 2,
+        body: "Meh",
+        author: "so@hso.com"
+      }
 	],
 	canPurchase: true,
 	soldOut: false
