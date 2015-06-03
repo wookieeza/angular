@@ -24,7 +24,23 @@
   		product.reviews.push(this.review);
   		this.review = {};
   	}
-  })
+  });
+
+  app.directive('productTitle', function(){ // translated from dash in directive
+    return { // a directive configuration definition  object
+      restrict: 'E', // e for element
+      templateUrl: 'product-title.html' // url of template
+
+    };
+
+  });
+
+  app.directive('productAttributeDirective', function(){
+     return {
+        restrict: 'A',
+        templateUrl: 'product-attribute-directive.html'
+     };
+  });
 
 
 var gems = [

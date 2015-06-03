@@ -17,13 +17,14 @@
 
     <ul class="list-group">
     	<li class="list-group-item" ng-repeat="product in store.products | limitTo:5 | orderBy:'-price'">
-    		<h3>
-    			{{product.name|uppercase}} <br>
-    			<em class="pull-left">discovered {{product.dateDiscovered | date:'MM/dd/yyyy @ h:mma'}}</em><br/>
-    			<em class="pull-right">{{product.price | currency}}</em>
-    			{{product.description | limitTo:18}} <br/>
-    			<img ng-src="{{product.images[0].thumb}}"/>
+    		<product-title></product-title> <!--HTML is more expressive: custom ELEMENT directive-->
+    		<!--BEST PRACTICE use element directives for UI widgets
+    		                      attribute directives for mixin behaviour (like tooltip)
+    		                      makes sense, an attribute can be dropped on any tag-->
+
+    		<h3 ng-include="'debbie.html'" > <!--cross origin request error in chrome-->
     		</h3>
+    		<p product-attribute-directive ></p>
     		<section  ng-controller="PanelController as panel">
     			<ul class="nav nav-pills">
     				<li ng-class="{ active: panel.isSelected(1) }"

@@ -1,0 +1,8 @@
+{{product.name|uppercase}} <br>
+<em class="pull-left">
+   discovered {{product.dateDiscovered | date:'MM/dd/yyyy @ h:mma'}}
+ </em><br/>
+<em class="pull-right">
+  {{product.price | currency}}</em>
+{{product.description | limitTo:18}} <br/>
+<img ng-src="{{product.images[0].thumb}}"/>
