@@ -15,82 +15,20 @@
          <button ng-show="product.canPurchase"> Add to Cart</button>
     </div> -->
 
+
+    <!--Write expressive HTML through custom directives, sohould be able to  understand the behaviour and intent 
+    just from the HTML-->
+
     <ul class="list-group">
     	<li class="list-group-item" ng-repeat="product in store.products | limitTo:5 | orderBy:'-price'">
-    		<product-title></product-title> <!--HTML is more expressive: custom ELEMENT directive-->
+    		<product-title ></product-title> <!--HTML is more expressive: custom ELEMENT directive-->
     		<!--BEST PRACTICE use element directives for UI widgets
     		                      attribute directives for mixin behaviour (like tooltip)
     		                      makes sense, an attribute can be dropped on any tag-->
 
-    		<h3 ng-include="'debbie.html'" > <!--cross origin request error in chrome-->
-    		</h3>
-    		<p product-attribute-directive ></p>
-    		<section  ng-controller="PanelController as panel">
-    			<ul class="nav nav-pills">
-    				<li ng-class="{ active: panel.isSelected(1) }"
-    				   ><a href ng-click="panel.selectTab(1)">Description</a>
-    				</li>
-    				<li ng-class="{ active: panel.isSelected(2) }"
-    				   ><a href ng-click="panel.selectTab(2)">Specifications</a>
-    				</li>
-    				<li ng-class="{ active: panel.isSelected(3)}"
-    				   ><a href ng-click="panel.selectTab(3)">Reviews</a>
-    				</li>
-    			</ul>
-    			{{tab}}
-    			<div class="panel" ng-show="panel.isSelected(1)">
-    				<h4>Description</h4>
-    				<p>{{product.description}}</p>
-    			</div>
-    			<div class="panel" ng-show="panel.isSelected(2)">
-    				<h4>Specifications</h4>
-    				<blockquote>None Yet</blockquote>
-    			</div>
-    			<div class="panel" ng-show="panel.isSelected(3)">
-    				<h4>Reviews</h4>
-    				<blockquote ng-repeat="review in product.reviews">
-                      <b>Stars: {{review.stars}}</b>
-                      {{review.body}}
-                      <cite>by: {{review.author}} on {{review.createdOn | date: 'MM/dd/yyyy @hh:mma'}}</cite>
-    				</blockquote>
-    				<h4>Submit a Review</h4>
-    				<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-    				                        ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate> <!-- turn off default html validation-->
-    				  <fieldset class="form-group">
-    					<blockquote>
-    						<b>Stars: {{reviewCtrl.review.stars}}</b>
-    						{{reviewCtrl.review.body}}
-    						{{reviewCtrl.review.color}}
-    						{{reviewCtrl.review.terms}}
-    						<cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
-    					</blockquote>
-    					 </fieldset>
-                         <fieldset class="form-group">
+    	
+    		<product-panels></product-panels>
 
-    					<select ng-model="reviewCtrl.review.stars" required ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
-    						<option value="">Rate this product</option>
-    					</select>
-    					<textarea ng-model="reviewCtrl.review.body" required ></textarea>
-    					</fieldset>
-                        <fieldset class="form-group">
-
-    					<label>by:</label>
-    					<input ng-model="reviewCtrl.review.author" required type="email"/>
-    					</fieldset>
-                        <div>reviewForm is valid? {{reviewForm.$valid}}</div><!-- .$valid is a built in property from angular-->
-              <fieldset class="form-group">
-
-    					<input ng-model="reviewCtrl.review.terms" type="checkbox" />
-    					</fieldset>
-    					
-    					<input ng-model="reviewCtrl.review.color" type="radio" value="red"/> Red
-    					<input ng-model="reviewCtrl.review.color" type="radio" value="blue"/> Blue
-    					<input ng-model="reviewCtrl.review.color" type="radio" value="green"/> Green
-
-    					<input type="submit" value="Submit"/>
-    				</form>
-    			</div>
-    		</section>
     	</li>
     </ul>
 
