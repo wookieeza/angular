@@ -1,25 +1,26 @@
-		<section  >
+<section >
+
 			<ul class="nav nav-pills">
-				<li ng-class="{ active: panel.isSelected(1) }" >
-				 <a href ng-click="panel.selectTab(1)">Description</a>
+				<li ng-class="{ active: panels.isSelected(1) }" >
+				 <a href ng-click="panels.selectTab(1)">Description</a>
 				</li>
-				<li ng-class="{ active: panel.isSelected(2) }">
-				  <a href ng-click="panel.selectTab(2)">Specifications</a>
+				<li ng-class="{ active: panels.isSelected(2) }">
+				  <a href ng-click="panels.selectTab(2)">Specifications</a>
 				</li>
-				<li ng-class="{ active: panel.isSelected(3)}" >
-				   <a href ng-click="panel.selectTab(3)">Reviews</a>
+				<li ng-class="{ active: panels.isSelected(3)}" >
+				   <a href ng-click="panels.selectTab(3)">Reviews</a>
 				</li>
 			</ul>
-			{{tab}}
-			<div class="panel" ng-show="panel.isSelected(1)">
+		
+			<div class="panel" ng-show="panels.isSelected(1)">
 				<h4>Description</h4>
 				<p>{{product.description}}</p>
 			</div>
-			<div class="panel" ng-show="panel.isSelected(2)">
+			<div class="panel" ng-show="panels.isSelected(2)">
 				<h4>Specifications</h4>
 				<blockquote>None Yet</blockquote>
 			</div>
-			<div class="panel" ng-show="panel.isSelected(3)">
+			<div class="panel" ng-show="panels.isSelected(3)">
 				
 			</div>
-		</section>
+</section>
