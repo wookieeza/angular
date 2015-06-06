@@ -20,19 +20,17 @@
     just from the HTML-->
 
     <ul class="list-group">
-    	<li class="list-group-item" ng-repeat="product in store.products | limitTo:5 | orderBy:'-price'">
-    		<product-title ></product-title> <!--HTML is more expressive: custom ELEMENT directive-->
-    		<!--BEST PRACTICE use element directives for UI widgets
-    		                      attribute directives for mixin behaviour (like tooltip)
-    		                      makes sense, an attribute can be dropped on any tag-->
-
-    	
-    		<product-panels></product-panels>
-
-    	</li>
+        <li class="list-group-item" ng-repeat="product in store.products | limitTo:5 | orderBy:'-price'">
+            <product-title ></product-title> <!--HTML is more expressive: custom ELEMENT directive-->
+            <!--BEST PRACTICE use element directives for UI widgets
+                                  attribute directives for mixin behaviour (like tooltip)
+                                  makes sense, an attribute can be dropped on any tag-->
+            <product-panels></product-panels>
+        </li>
     </ul>
 
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"> </script>
+    <script type="text/javascript" src="products.js"></script>
    </body>
 </html>

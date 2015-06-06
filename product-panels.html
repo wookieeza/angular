@@ -28,41 +28,50 @@
 						{{review.body}}
 						<cite>by: {{review.author}} on {{review.createdOn | date: 'MM/dd/yyyy @hh:mma'}}</cite>
 					</blockquote>
-					<h4>Submit a Review</h4>
-					<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"
-						  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate> <!-- turn off default html validation-->
-						<fieldset class="form-group">
-							<blockquote>
-								<b>Stars: {{reviewCtrl.review.stars}}</b>
-								{{reviewCtrl.review.body}}
-								{{reviewCtrl.review.color}}
-								{{reviewCtrl.review.terms}}
-								<cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
-							</blockquote>
-						</fieldset>
-						<fieldset class="form-group">
 
-							<select ng-model="reviewCtrl.review.stars" required ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+					<form  class="form-horizontal" name="reviewForm" ng-controller="ReviewController as reviewCtrl"
+						  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate> <!-- turn off default html validation-->
+                        <h4>Submit a Review</h4>
+                        <div class="form-group">
+                            <blockquote>
+                                <b>Stars: {{reviewCtrl.review.stars}}</b><br/>
+                                Body: {{reviewCtrl.review.body}}<br/>
+                                Color: {{reviewCtrl.review.color}}<br/>
+                                Terms: {{reviewCtrl.review.terms}}<br/>
+                                <cite class="clearfix">by: {{reviewCtrl.review.author}}</cite>
+                            </blockquote>
+                        </div>
+
+						<div class="form-group">
+
+							<select class="form-control" ng-model="reviewCtrl.review.stars" required ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
 								<option value="">Rate this product</option>
 							</select>
-							<textarea ng-model="reviewCtrl.review.body" required ></textarea>
-						</fieldset>
-						<fieldset class="form-group">
+							<textarea class="form-control" placeholder="your review here" ng-model="reviewCtrl.review.body" required ></textarea>
+						</div>
+						<div class="form-group">
 
 							<label>by:</label>
-							<input ng-model="reviewCtrl.review.author" required type="email"/>
-						</fieldset>
+							<input class="form-control" placeholder="you@domain.com" ng-model="reviewCtrl.review.author" required type="email"/>
+						</div>
 						<div>reviewForm is valid? {{reviewForm.$valid}}</div><!-- .$valid is a built in property from angular-->
-						<fieldset class="form-group">
+						<div class="form-group">
 
-							<input ng-model="reviewCtrl.review.terms" type="checkbox" />
-						</fieldset>
+                            <div class="checkbox">
+							  <input class="form-control" ng-model="reviewCtrl.review.terms" type="checkbox" /> Terms
+                            </div>
+						</div>
+                        <div class="radio">
+						  <input ng-model="reviewCtrl.review.color" type="radio" value="red"/> Red
+                        </div>
+                        <div class="radio">
+						  <input ng-model="reviewCtrl.review.color" type="radio" value="blue"/> Blue
+                        </div>
+                        <div class="radio">
+						  <input ng-model="reviewCtrl.review.color" type="radio" value="green"/> Green
+                        </div>
 
-						<input ng-model="reviewCtrl.review.color" type="radio" value="red"/> Red
-						<input ng-model="reviewCtrl.review.color" type="radio" value="blue"/> Blue
-						<input ng-model="reviewCtrl.review.color" type="radio" value="green"/> Green
-
-						<input type="submit" value="Submit"/>
+						<input class="btn btn-primary" type="submit" value="Submit"/>
 					</form>
 				</div>
 			</div>
